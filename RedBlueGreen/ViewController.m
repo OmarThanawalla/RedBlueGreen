@@ -42,7 +42,14 @@
     self.continuePlaying = 1;
     self.level = 1;
     self.score = 0;
-    
+    [self setLevelLbl:self.level andScoreLbl:self.score];
+}
+
+-(void)setLevelLbl:(int)lvl andScoreLbl: (int) scre
+{
+    //update labels
+    self.levelLbl.text = [NSString stringWithFormat:@"%d",lvl];
+    self.scoreLbl.text = [NSString stringWithFormat:@"%d",scre];
 }
 
 -(void)resetGameTimer
@@ -65,18 +72,38 @@
         //kill the game (ran out of time)
         [self killGame];
     }else{
-    //select the word
-    int r = arc4random() % 3;
-    NSString * myWord = self.word[r];
-    self.correctAns = r;
-    
-    //select the color of the word
-    int s = arc4random() % 3;
-    UIColor * myColor = self.color[s];
-    
-    
-    //assignWord
-    [self assignWord:myWord withColor:myColor];
+        [self createWordFlashBasedOnLevel];
+    }
+}
+
+-(void)createWordFlashBasedOnLevel
+{
+    if(self.level == 1){
+        //select the word
+        int r = arc4random() % 3;
+        NSString * myWord = self.word[r];
+        self.correctAns = r;
+        
+        //select the color of the word
+        UIColor * myColor = [UIColor blackColor];
+        
+        //assignWord
+        [self assignWord:myWord withColor:myColor];
+    }
+    else if (self.level == 2){
+        //select the word
+        int r = arc4random() % 3;
+        NSString * myWord = self.word[r];
+        self.correctAns = r;
+        
+        //select the color of the word
+        int s = arc4random() % 3;
+        UIColor * myColor = self.color[s];
+        
+        //assignWord
+        [self assignWord:myWord withColor:myColor];
+    }else{
+        
     }
 }
 
@@ -86,7 +113,7 @@
     NSLog(@"assignWordwithColor called: %@", wrd);
     self.wordFlash.text = wrd;
     
-    //self.wordFlash.textColor = clr; //this is hard
+    self.wordFlash.textColor = clr; //this is hard
     
     //The user must save himself
     self.continuePlaying = 0;
@@ -104,9 +131,7 @@
     if(self.correctAns == 0)
     {
         NSLog(@"pushRed - correct choice");
-        //correct push
-        self.continuePlaying = 1;
-        self.wordFlash.text = @"Great!";
+        [self rewardCorrectAnsCheckLevelUp];
         [self resetGameTimer];
     }else{
         NSLog(@"pushRed - wrong choice");
@@ -122,8 +147,7 @@
     if(self.correctAns == 1)
     {
         NSLog(@"pushGreen - correct choice");
-        self.continuePlaying = 1;
-        self.wordFlash.text = @"Great!";
+        [self rewardCorrectAnsCheckLevelUp];
         [self resetGameTimer];
     }else{
         NSLog(@"pushGreen - wrong choice");
@@ -137,14 +161,31 @@
     if(self.correctAns == 2)
     {
         NSLog(@"pushBlue - correct choice");
-        self.continuePlaying = 1;
-        self.wordFlash.text = @"Great!";
+        [self rewardCorrectAnsCheckLevelUp];
         [self resetGameTimer];
     }else{
         NSLog(@"pushBlue - wrong choice");
         [self killGame];
     }
     
+}
+
+-(void)rewardCorrectAnsCheckLevelUp
+{
+    //correct push
+    self.continuePlaying = 1;
+    self.wordFlash.text = @"Great!";
+    
+    //increment score by one point
+    self.score = self.score+1;
+    //level up if score multiple of 5
+    if(self.score%5==0)
+    {
+        self.level = self.level+1;
+    }
+    //update labels
+    self.levelLbl.text = [NSString stringWithFormat:@"%d",self.level];
+    self.scoreLbl.text = [NSString stringWithFormat:@"%d",self.score];
 }
 
 -(void)killGame
@@ -157,6 +198,7 @@
 - (IBAction)playAgain:(id)sender {
     self.continuePlaying = 1;
     [self resetGameTimer];
+    [self setLevelLbl:1 andScoreLbl:0];
 }
 
 
