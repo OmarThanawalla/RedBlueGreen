@@ -31,18 +31,33 @@
     
     //Begin Timer
     self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:2.0
-                                     target:self
-                                   selector:@selector(createWordFlash)
-                                   userInfo:nil
-                                    repeats:YES];
+                                                      target:self
+                                                    selector:@selector(createWordFlash)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    
+    
     //The game is live
     self.continuePlaying = 1;
 }
 
+-(void)resetGameTimer
+{
+    NSLog(@"resetGameTimer called");
+    [self.gameTimer invalidate];
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                                      target:self
+                                                    selector:@selector(createWordFlash)
+                                                    userInfo:nil
+                                                     repeats:YES];
+}
+
 -(void)createWordFlash
 {
+    NSLog(@"createWordFlash called");
     if(!self.continuePlaying)
     {
+        NSLog(@"createWordFlash - ran out of time");
         //kill the game (ran out of time)
         [self killGame];
     }
@@ -64,8 +79,10 @@
 -(void)assignWord: (NSString* ) wrd
         withColor: (UIColor *) clr
 {
+    NSLog(@"assignWordwithColor called");
     self.wordFlash.text = wrd;
-    self.wordFlash.textColor = clr;
+    
+    //self.wordFlash.textColor = clr; //this is hard
     
     //The user must save himself
     self.continuePlaying = 0;
@@ -78,34 +95,49 @@
 }
 
 - (IBAction)pushRed:(id)sender {
+    NSLog(@"pushRed");
+
     if(self.correctAns == 0)
     {
+        NSLog(@"pushRed - correct choice");
         //correct push
         self.continuePlaying = 1;
-        [self createWordFlash];
+        self.wordFlash.text = @"Great!";
+        [self resetGameTimer];
     }else{
+        NSLog(@"pushRed - wrong choice");
+
         //lose, kill the game (incorrect push)
         [self killGame];
     }
 }
 
 - (IBAction)pushGreen:(id)sender {
+    NSLog(@"pushGreen");
+
     if(self.correctAns == 1)
     {
+        NSLog(@"pushGreen - correct choice");
         self.continuePlaying = 1;
-        [self createWordFlash];
+        self.wordFlash.text = @"Great!";
+        [self resetGameTimer];
     }else{
+        NSLog(@"pushGreen - wrong choice");
         [self killGame];
     }
     
 }
 
 - (IBAction)pushBlue:(id)sender {
-    if(self.continuePlaying == 2)
+    NSLog(@"pushBlue");
+    if(self.correctAns == 2)
     {
+        NSLog(@"pushBlue - correct choice");
         self.continuePlaying = 1;
-        [self createWordFlash];
+        self.wordFlash.text = @"Great!";
+        [self resetGameTimer];
     }else{
+        NSLog(@"pushBlue - wrong choice");
         [self killGame];
     }
     
@@ -113,11 +145,12 @@
 
 -(void)killGame
 {
+    NSLog(@"killGame: called");
     [self.gameTimer invalidate];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Really reset?" message:@"Do you really want to reset this game?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil] ;
-    // optional - add more buttons:
-    [alert addButtonWithTitle:@"Yes"];
-    [alert show];
+    self.wordFlash.text = @"You lose";
+}
+- (IBAction)playAgain:(id)sender {
+    [self resetGameTimer];
 }
 
 
