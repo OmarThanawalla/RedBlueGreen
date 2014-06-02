@@ -60,7 +60,7 @@
         NSLog(@"createWordFlash - ran out of time");
         //kill the game (ran out of time)
         [self killGame];
-    }
+    }else{
     //select the word
     int r = arc4random() % 3;
     NSString * myWord = self.word[r];
@@ -74,12 +74,13 @@
     
     //assignWord
     [self assignWord:myWord withColor:myColor];
+    }
 }
 
 -(void)assignWord: (NSString* ) wrd
         withColor: (UIColor *) clr
 {
-    NSLog(@"assignWordwithColor called");
+    NSLog(@"assignWordwithColor called: %@", wrd);
     self.wordFlash.text = wrd;
     
     //self.wordFlash.textColor = clr; //this is hard
@@ -148,6 +149,7 @@
     NSLog(@"killGame: called");
     [self.gameTimer invalidate];
     self.wordFlash.text = @"You lose";
+    NSLog(@"killGame: end of method");
 }
 - (IBAction)playAgain:(id)sender {
     [self resetGameTimer];
