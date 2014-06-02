@@ -152,6 +152,7 @@
     NSLog(@"killGame: end of method");
 }
 - (IBAction)playAgain:(id)sender {
+    self.continuePlaying = 1;
     [self resetGameTimer];
 }
 
