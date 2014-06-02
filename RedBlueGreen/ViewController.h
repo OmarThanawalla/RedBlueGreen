@@ -10,4 +10,10 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)pushRed:(id)sender;
+- (IBAction)pushGreen:(id)sender;
+- (IBAction)pushBlue:(id)sender;
+
+
+
 @end

@@ -23,6 +23,9 @@
                                 <state key="normal" title="Green">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pushGreen:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hvz-a1-VcH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwe-hK-wAd">
                                 <rect key="frame" x="20" y="477" width="46" height="30"/>
@@ -31,6 +34,9 @@
                                 <state key="normal" title="Red">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pushRed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="HWg-oj-CZP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgA-eY-6cN">
                                 <rect key="frame" x="254" y="477" width="46" height="30"/>
@@ -39,6 +45,9 @@
                                 <state key="normal" title="Blue">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pushBlue:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wvn-M8-IcC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
