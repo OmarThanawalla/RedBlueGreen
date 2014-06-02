@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *wordFlash;
+
 - (IBAction)pushRed:(id)sender;
 - (IBAction)pushGreen:(id)sender;
 - (IBAction)pushBlue:(id)sender;

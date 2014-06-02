@@ -10,6 +10,9 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) NSArray * word;
+
+
 @end
 
 @implementation ViewController
@@ -18,6 +21,37 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.word = [NSArray arrayWithObjects:@"red", @"green", @"blue", nil];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0
+                                     target:self
+                                   selector:@selector(createWordFlash)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+-(void)createWordFlash
+{
+    //select the word
+    int r = arc4random() % 3;
+    
+    NSLog(@"r: %i", r);
+    
+    NSString * myWord = self.word[r];
+    
+    
+    //select the color of the word
+    
+    
+    //assignWord
+    [self assignWord:myWord];
+}
+
+-(void)assignWord: (NSString* ) wrd
+{
+    self.wordFlash.text = wrd;
+    
 }
 
 - (void)didReceiveMemoryWarning
