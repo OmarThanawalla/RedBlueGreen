@@ -14,7 +14,8 @@
 @property (strong, nonatomic) NSArray * word;
 @property (strong, nonatomic) NSArray * color;
 @property (assign) int correctAns;
-
+@property (assign) int level;
+@property (assign) int score;
 
 @end
 
@@ -37,8 +38,11 @@
                                                      repeats:YES];
     
     
-    //The game is live
+    //Initialize new game
     self.continuePlaying = 1;
+    self.level = 1;
+    self.score = 0;
+    
 }
 
 -(void)resetGameTimer
@@ -68,7 +72,6 @@
     
     //select the color of the word
     int s = arc4random() % 3;
-    
     UIColor * myColor = self.color[s];
     
     

@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *wordFlash;
 @property (assign) int continuePlaying;
+@property (strong, nonatomic) IBOutlet UITextField *levelLbl;
+@property (strong, nonatomic) IBOutlet UITextField *scoreLbl;
 
 
 - (IBAction)pushRed:(id)sender;
