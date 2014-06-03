@@ -98,7 +98,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="StX-HP-qzM" kind="modal" id="1Sk-1L-jzR"/>
+                                    <segue destination="VfW-sT-ytl" kind="modal" id="1Sk-1L-jzR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -123,7 +123,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="mgq-TE-tF1">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mgq-TE-tF1" id="1rF-2J-KaJ">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -136,8 +136,33 @@
                             <outlet property="delegate" destination="StX-HP-qzM" id="Abj-2h-Uh9"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="zvc-Kl-HdG">
+                        <barButtonItem key="leftBarButtonItem" title="Dismiss" id="fKI-nW-rul">
+                            <connections>
+                                <action selector="dimiss:" destination="StX-HP-qzM" id="69c-iO-52k"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uaq-q6-wl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095" y="184"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gia-JR-RPA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VfW-sT-ytl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nIu-Lj-Tr3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="StX-HP-qzM" kind="relationship" relationship="rootViewController" id="peG-9O-vPb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oVh-p8-HCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="569" y="184"/>
         </scene>
