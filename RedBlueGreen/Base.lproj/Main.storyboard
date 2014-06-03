@@ -113,7 +113,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--My High Scores TableVC-->
+        <!--My High Scores TableVC - Pull to Refresh-->
         <scene sceneID="m3Z-xa-8yD">
             <objects>
                 <tableViewController id="StX-HP-qzM" customClass="MyHighScoresTableVC" sceneMemberID="viewController">
@@ -136,7 +136,7 @@
                             <outlet property="delegate" destination="StX-HP-qzM" id="Abj-2h-Uh9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="zvc-Kl-HdG">
+                    <navigationItem key="navigationItem" title="Pull to Refresh" id="zvc-Kl-HdG">
                         <barButtonItem key="leftBarButtonItem" title="Dismiss" id="fKI-nW-rul">
                             <connections>
                                 <action selector="dimiss:" destination="StX-HP-qzM" id="69c-iO-52k"/>
