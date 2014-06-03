@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <Parse/Parse.h>
 
 @interface ViewController ()
 
@@ -46,6 +47,11 @@
     self.level = 1;
     self.score = 0;
     [self setLevelLbl:self.level andScoreLbl:self.score];
+    
+    //Test Parse
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
 }
 
 -(void)setLevelLbl:(int)lvl andScoreLbl: (int) scre
