@@ -255,7 +255,7 @@
 {
     NSLog(@"killGame: called");
     [self.gameTimer invalidate];
-    self.wordFlash.text = @"You lose";
+    self.wordFlash.text = @"You lose - Score Submitted to Server";
     NSLog(@"killGame: end of method");
     
     //Submit Score to server
@@ -271,6 +271,11 @@
     [self resetGameTimer];
     [self setLevelLbl:1 andScoreLbl:0];
 }
+
+//- (IBAction)showHighScores:(id)sender {
+//    PFQueryTableViewController * highScores = [[PFQueryTableViewController alloc] initWithClassName:@"GameScore"];
+//    [self presentViewController:highScores animated:YES completion:NULL];
+//}
 
 
 @end

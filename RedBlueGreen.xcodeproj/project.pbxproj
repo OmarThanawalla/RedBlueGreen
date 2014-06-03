@@ -17,6 +17,7 @@
 		A7AEA190193D5CFE0060397B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AEA18F193D5CFE0060397B /* Security.framework */; };
 		A7AEA192193D5D0C0060397B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AEA191193D5D0C0060397B /* StoreKit.framework */; };
 		A7AEA194193D5D140060397B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AEA193193D5D140060397B /* SystemConfiguration.framework */; };
+		A7AEA197193D623D0060397B /* MyHighScoresTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AEA196193D623D0060397B /* MyHighScoresTableVC.m */; };
 		A7C3C608193CFEF9002AC217 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C3C607193CFEF9002AC217 /* Foundation.framework */; };
 		A7C3C60A193CFEF9002AC217 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C3C609193CFEF9002AC217 /* CoreGraphics.framework */; };
 		A7C3C60C193CFEF9002AC217 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C3C60B193CFEF9002AC217 /* UIKit.framework */; };
@@ -54,6 +55,8 @@
 		A7AEA18F193D5CFE0060397B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A7AEA191193D5D0C0060397B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A7AEA193193D5D140060397B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A7AEA195193D623D0060397B /* MyHighScoresTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHighScoresTableVC.h; sourceTree = "<group>"; };
+		A7AEA196193D623D0060397B /* MyHighScoresTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHighScoresTableVC.m; sourceTree = "<group>"; };
 		A7C3C604193CFEF9002AC217 /* RedBlueGreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedBlueGreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C3C607193CFEF9002AC217 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7C3C609193CFEF9002AC217 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -155,6 +158,8 @@
 				A7C3C616193CFEF9002AC217 /* AppDelegate.h */,
 				A7C3C617193CFEF9002AC217 /* AppDelegate.m */,
 				A7C3C619193CFEF9002AC217 /* Main.storyboard */,
+				A7AEA195193D623D0060397B /* MyHighScoresTableVC.h */,
+				A7AEA196193D623D0060397B /* MyHighScoresTableVC.m */,
 				A7C3C61C193CFEF9002AC217 /* ViewController.h */,
 				A7C3C61D193CFEF9002AC217 /* ViewController.m */,
 				A7C3C61F193CFEF9002AC217 /* Images.xcassets */,
@@ -291,6 +296,7 @@
 			files = (
 				A7C3C61E193CFEF9002AC217 /* ViewController.m in Sources */,
 				A7C3C618193CFEF9002AC217 /* AppDelegate.m in Sources */,
+				A7AEA197193D623D0060397B /* MyHighScoresTableVC.m in Sources */,
 				A7C3C614193CFEF9002AC217 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
