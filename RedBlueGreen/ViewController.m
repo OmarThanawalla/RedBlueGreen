@@ -257,6 +257,14 @@
     [self.gameTimer invalidate];
     self.wordFlash.text = @"You lose";
     NSLog(@"killGame: end of method");
+    
+    //Submit Score to server
+    PFObject * gameScore = [PFObject objectWithClassName:@"GameScore"];
+    [gameScore setObject:@"foo" forKey:@"name"];
+    [gameScore setObject:[NSString stringWithFormat:@"%d",self.score] forKey:@"highScore"];
+    [gameScore setObject:[NSString stringWithFormat:@"%d",self.level] forKey:@"level"];
+    [gameScore saveInBackground];
+    
 }
 - (IBAction)playAgain:(id)sender {
     self.continuePlaying = 1;
