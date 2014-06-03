@@ -50,6 +50,23 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+// Override to customize the look of a cell representing an object. The default is to display
+// a UITableViewCellStyleDefault style cell with the label being the first key in the object.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell
+    cell.textLabel.text = [object objectForKey:@"name"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"HighScore: %@", [object objectForKey:@"highScore"]];
+    
+    return cell;
+}
+
 /*
  #pragma mark - Navigation
  
