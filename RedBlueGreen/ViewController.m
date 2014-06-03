@@ -16,6 +16,9 @@
 @property (assign) int correctAns;
 @property (assign) int level;
 @property (assign) int score;
+//These two arrays will hold the solution for levels >= 3
+@property (strong, nonatomic) NSMutableArray * correctAnsManyColors;
+@property (strong, nonatomic) NSMutableArray * correctAnsManyColorsFont;
 
 @end
 
@@ -85,7 +88,7 @@
         self.correctAns = r;
         
         //select the color of the word
-        UIColor * myColor = [UIColor blackColor];
+        UIColor * myColor = self.color[r];
         
         //assignWord
         [self assignWord:myWord withColor:myColor];
@@ -102,8 +105,61 @@
         
         //assignWord
         [self assignWord:myWord withColor:myColor];
-    }else{
+    }
+    else{ //for Levels >= 3
         
+        [self killGame];
+        //String should say "red blue green" with elements colored randomly,
+        //Coloring the text inside a text label according to a dynamic allocation of fonts is proving to be tricky in objective-c
+        //moving on to setting up a leaderboard. will come back if more time
+        
+        /*
+        //for Levels >= 3
+        self.correctAnsManyColors = [NSMutableArray array];
+        self.correctAnsManyColorsFont = [NSMutableArray array];
+        
+        //create sequence of words
+        int i;
+        for ( i = 0 ; i < self.level; i++) {
+            //select the word
+            int r = arc4random() % 3;
+            NSString * myWord = self.word[r];
+            [self.correctAnsManyColors addObject:myWord];
+            
+            //select the color of the word
+            int s = arc4random() % 3;
+            UIColor * myColor = self.color[s];
+            [self.correctAnsManyColorsFont addObject:myColor];
+            
+        }
+        //color sequence of words
+        NSString * combinedString = [self.correctAnsManyColors componentsJoinedByString:@" "];
+        NSLog(@"combinedString: %@", combinedString);
+        self.wordFlash.text = combinedString;
+        NSMutableAttributedString * text = [[NSMutableAttributedString alloc] initWithString:combinedString];
+        int pivot = 0;
+        int j;
+        for(j = 0; j < [self.correctAnsManyColorsFont count]; j++)
+        {
+            NSLog(@"pivot: %i", pivot);
+            NSLog(@"text length: %i",[text length]);
+            UIColor * chosenColor = self.correctAnsManyColorsFont[j];
+            if (chosenColor == [UIColor redColor]) {
+                [text addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(pivot, 4)];
+                pivot = pivot + 3;
+            }else if(chosenColor == [UIColor greenColor])
+            {
+                [text addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(pivot, 6)];
+                pivot = pivot + 5;
+            }else
+            {
+                [text addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(pivot, 5)];
+                pivot = pivot + 4;
+            }
+        }
+        [text addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(1, 3)];
+        [self.wordFlash setAttributedText:text];
+        */
     }
 }
 
@@ -177,11 +233,12 @@
     self.wordFlash.text = @"Great!";
     
     //increment score by one point
-    self.score = self.score+1;
+    self.score = self.score+10;
     //level up if score multiple of 5
-    if(self.score%5==0)
+    if(self.score%50==0)
     {
         self.level = self.level+1;
+        self.wordFlash.text = @"Next Level!";
     }
     //update labels
     self.levelLbl.text = [NSString stringWithFormat:@"%d",self.level];
